@@ -440,3 +440,6 @@ or
 
 select sum(salary),department as sum_of_department from tbl_users group BY department
 ```
+
+select sum(salary),department as sum_of_department from tbl_users group BY department
+```
