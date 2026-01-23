@@ -332,3 +332,9 @@ DELETE FROM table_name WHERE user_id BETWEEN 6 AND 20;
 ```
 
 **Note:** After delete, data can be rolled back (using transactions).
+
+
+allamlaml
+
+
+akjdsm
