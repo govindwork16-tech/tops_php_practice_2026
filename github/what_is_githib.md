@@ -110,7 +110,7 @@ If you want, I can add a one-page printable cheat sheet, an example `ci.yml` wor
 
     git init,
     git add,
-    git commit -m '21-01-2026 all uploded
+    git commit -m '21-01-2026 all uploded'
     git remote add origin https://github.com/govindwork16-tech/tops_php_practice_2026.git
     git config --global user.name "Your Name"
     git config --global user.email "you@example.com"
