@@ -73,22 +73,22 @@ A **table** is a collection of related data organized in rows and columns.
 ### Example Table Structure
 
 | uid | name | age | pin   | salary | address |
-|-----|------|-----|-------|--------|---------|
+| --- | ---- | --- | ----- | ------ | ------- |
 | 1   | abc  | 32  | 36005 | 15600  | rjt     |
 
 ### SQL Data Types Chart
 
-| Column Name | Data Type      | Size         |
-|-------------|----------------|--------------|
-| id          | int            | default (11) |
-| name        | char, varchar  | 0-255        |
-| date        | date, varchar  | 0-255        |
-| datetime    | datetime       | -            |
-| comments    | text           | -            |
-| message     | text           | -            |
-| price       | int, float     | -            |
-| mobile      | bigInteger     | default (20) |
-| image       | blob, varchar  | 0-255        |
+| Column Name | Data Type     | Size         |
+| ----------- | ------------- | ------------ |
+| id          | int           | default (11) |
+| name        | char, varchar | 0-255        |
+| date        | date, varchar | 0-255        |
+| datetime    | datetime      | -            |
+| comments    | text          | -            |
+| message     | text          | -            |
+| price       | int, float    | -            |
+| mobile      | bigInteger    | default (20) |
+| image       | blob, varchar | 0-255        |
 
 ### Syntax
 ```sql
@@ -561,9 +561,9 @@ select sum(salary),department from tbl_users where department in ('IT','CSE','HR
 
   **tbl_country**
 
-  | country_id(pk)   | countryname |
-  |------------------|-------------|
-  |1                 | india       |         
+  | country_id(pk) | countryname |
+  | -------------- | ----------- |
+  | 1              | india       |
 
 
    2. **unique key**:
@@ -575,9 +575,9 @@ select sum(salary),department from tbl_users where department in ('IT','CSE','HR
 
   **tbl_users**
 
-  | user_id(pk)   |name | age | email(uk)  | phone     |
-  |---------------|-----|-----|--------|---------------|
-  |1              |A    | 3   |a@gmail.com | 9173565245| 
+  | user_id(pk) | name | age | email(uk)   | phone      |
+  | ----------- | ---- | --- | ----------- | ---------- |
+  | 1           | A    | 3   | a@gmail.com | 9173565245 |
 
 
      ```
@@ -595,20 +595,20 @@ select sum(salary),department from tbl_users where department in ('IT','CSE','HR
 
   **tbl_students**
 
-  | student_id(pk)   | studentname |
-  |------------------|-------------|
-  |1                 | meet        |
-  |2                 | vijay       |
-  |3                 | govind      | 
+  | student_id(pk) | studentname |
+  | -------------- | ----------- |
+  | 1              | meet        |
+  | 2              | vijay       |
+  | 3              | govind      |
 
   
   **tbl_faculty**
 
-  | faculty_id(pk)   | facultyname | age   |   department  |  student_id(fk) |
-  |------------------|-------------|-------|---------------|-----------------|
-  |1                 | brijesh     | 34    |   CSE         |    1            |
-  |2                 | mitesh      | 29    |   IT          |    2            |
-  |3                 | prakruti    | 29    |   EC          |    3            |
+  | faculty_id(pk) | facultyname | age | department | student_id(fk) |
+  | -------------- | ----------- | --- | ---------- | -------------- |
+  | 1              | brijesh     | 34  | CSE        | 1              |
+  | 2              | mitesh      | 29  | IT         | 2              |
+  | 3              | prakruti    | 29  | EC         | 3              |
 
   **how to create a foreign key**
 
