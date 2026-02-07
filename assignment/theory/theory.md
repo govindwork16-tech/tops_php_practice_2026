@@ -80,3 +80,5 @@ Apply different styles based on screen size:
 ### Mobile-First Approach
 
 Start designing for mobile, then add features for larger screens. Benefits: better performance, forced prioritization, easier maintenance.
+
+
