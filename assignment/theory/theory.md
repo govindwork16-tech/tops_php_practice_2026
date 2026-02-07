@@ -70,7 +70,10 @@ Creating websites that work on all screen sizes (mobile, tablet, desktop). Impor
 Apply different styles based on screen size:
 ```css
 @media (max-width: 768px) {
-  .container { grid-template-columns: 1fr; }
+  .container { grid-template-columns: 300px 300px; }
+}
+@media (max-width: 480px) {
+  .container { grid-template-columns: 200px; }
 }
 ```
 
