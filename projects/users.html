@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users — Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">A</div>
+            <span class="brand-name">AdminPanel</span>
+        </div>
+        <nav>
+            <div class="nav-group">
+                <div class="nav-group-label">Main</div>
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-gauge nav-icon"></i> Dashboard</a>
+                <a href="analytics.html" class="nav-item"><i class="fa-solid fa-chart-line nav-icon"></i> Analytics</a>
+                <a href="orders.html" class="nav-item"><i class="fa-solid fa-bag-shopping nav-icon"></i> Orders <span class="nav-badge red">12</span></a>
+                <a href="products.html" class="nav-item"><i class="fa-solid fa-box nav-icon"></i> Products</a>
+            </div>
+            <div class="nav-group">
+                <div class="nav-group-label">Manage</div>
+                <a href="users.html" class="nav-item active"><i class="fa-solid fa-users nav-icon"></i> Users <span class="nav-badge">8</span></a>
+                <a href="messages.html" class="nav-item"><i class="fa-solid fa-envelope nav-icon"></i> Messages <span class="nav-badge">3</span></a>
+                <a href="reports.html" class="nav-item"><i class="fa-solid fa-file-lines nav-icon"></i> Reports</a>
+            </div>
+            <div class="nav-group">
+                <div class="nav-group-label">Account</div>
+                <a href="profile.html" class="nav-item"><i class="fa-solid fa-circle-user nav-icon"></i> My Profile</a>
+                <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear nav-icon"></i> Settings</a>
+            </div>
+        </nav>
+        <div class="sidebar-footer">
+            <div id="userDropdown" class="user-dropdown">
+                <div class="dd-user-head">
+                    <div class="dd-name">John Carter</div>
+                    <div class="dd-email">john@admin.com</div>
+                </div>
+                <a href="profile.html" class="dd-link"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+                <a href="settings.html" class="dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                <a href="#" class="dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                <a href="#" class="dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                <div class="dd-sep"></div>
+                <a href="#" class="dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+            </div>
+            <div class="user-toggle" id="userToggle">
+                <div class="user-avatar">JC</div>
+                <div class="user-meta">
+                    <div class="user-name">John Carter</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+                <i class="fa-solid fa-chevron-up user-caret"></i>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main" id="main">
+        <header class="topbar">
+            <button class="topbar-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+            <div class="topbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search users…"></div>
+            <div class="topbar-right">
+                <button class="tb-icon-btn"><i class="fa-solid fa-bell"></i><span class="tb-dot"></span></button>
+                <button class="tb-icon-btn"><i class="fa-solid fa-envelope"></i></button>
+                <div class="tb-user" id="tbUser">
+                    <div class="tb-avatar">JC</div>
+                    <div class="tb-user-text">
+                        <span class="tb-name">John Carter</span>
+                        <span class="tb-role">Administrator</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down tb-caret"></i>
+                    <div class="tb-dropdown" id="tbDropdown">
+                        <div class="tb-dd-head">
+                            <div class="tb-dd-name">John Carter</div>
+                            <div class="tb-dd-email">john@admin.com</div>
+                        </div>
+                        <a href="profile.html" class="tb-dd-link"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+                        <a href="settings.html" class="tb-dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="tb-dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                        <a href="#" class="tb-dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                        <div class="tb-dd-sep"></div>
+                        <a href="#" class="tb-dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="page-header-row">
+                <div>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <i class="fa-solid fa-chevron-right sep"></i>
+                        <span class="current">Users</span>
+                    </div>
+                    <h1 class="page-title">Users</h1>
+                    <p class="page-sub">Manage user accounts, roles and permissions.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Invite sent!', 'success')">
+                    <i class="fa-solid fa-user-plus"></i> Invite User
+                </button>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-top"><div class="stat-icon blue"><i class="fa-solid fa-users"></i></div></div>
+                    <div class="stat-value">8,340</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top"><div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div></div>
+                    <div class="stat-value">6,920</div>
+                    <div class="stat-label">Active</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top"><div class="stat-icon orange"><i class="fa-solid fa-user-clock"></i></div></div>
+                    <div class="stat-value">1,340</div>
+                    <div class="stat-label">Inactive</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top"><div class="stat-icon red"><i class="fa-solid fa-user-shield"></i></div></div>
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Admins</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" style="flex-wrap:wrap;gap:10px;">
+                    <div>
+                        <div class="card-title">User Directory</div>
+                    </div>
+                    <div class="flex-center gap-8">
+                        <select class="form-control" style="width:auto;padding:6px 10px;font-size:12.5px;">
+                            <option>All Roles</option>
+                            <option>Admin</option>
+                            <option>Editor</option>
+                            <option>Viewer</option>
+                        </select>
+                        <select class="form-control" style="width:auto;padding:6px 10px;font-size:12.5px;">
+                            <option>All Status</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Role</th>
+                                <th>Plan</th>
+                                <th>Joined</th>
+                                <th>Last Active</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="flex-center gap-10"><div class="td-avatar" style="background:#eff6ff;color:#3b82f6;">PK</div><div><div class="td-name">Priya Kapoor</div><div class="td-muted">priya@mail.com</div></div></div></td>
+                                <td><span class="badge badge-info">Admin</span></td>
+                                <td>Enterprise</td>
+                                <td style="color:#64748b;font-size:12.5px;">Jan 12, 2025</td>
+                                <td style="color:#64748b;font-size:12.5px;">Today</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td><div class="flex-center gap-8"><button class="btn btn-outline btn-xs">Edit</button><button class="btn btn-danger btn-xs" onclick="showToast('User suspended', 'warning')">Suspend</button></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="flex-center gap-10"><div class="td-avatar" style="background:#fff7ed;color:#f97316;">RJ</div><div><div class="td-name">Rohit Jain</div><div class="td-muted">rohit@mail.com</div></div></div></td>
+                                <td><span class="badge badge-neutral">Editor</span></td>
+                                <td>Pro</td>
+                                <td style="color:#64748b;font-size:12.5px;">Feb 3, 2025</td>
+                                <td style="color:#64748b;font-size:12.5px;">2 hrs ago</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td><div class="flex-center gap-8"><button class="btn btn-outline btn-xs">Edit</button><button class="btn btn-danger btn-xs" onclick="showToast('User suspended', 'warning')">Suspend</button></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="flex-center gap-10"><div class="td-avatar" style="background:#f0fdf4;color:#22c55e;">SM</div><div><div class="td-name">Sara Mehta</div><div class="td-muted">sara@mail.com</div></div></div></td>
+                                <td><span class="badge badge-neutral">Viewer</span></td>
+                                <td>Starter</td>
+                                <td style="color:#64748b;font-size:12.5px;">Mar 7, 2025</td>
+                                <td style="color:#64748b;font-size:12.5px;">Yesterday</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td><div class="flex-center gap-8"><button class="btn btn-outline btn-xs">Edit</button><button class="btn btn-danger btn-xs">Suspend</button></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="flex-center gap-10"><div class="td-avatar" style="background:#fef2f2;color:#ef4444;">AV</div><div><div class="td-name">Amir Vohra</div><div class="td-muted">amir@mail.com</div></div></div></td>
+                                <td><span class="badge badge-neutral">Editor</span></td>
+                                <td>Pro</td>
+                                <td style="color:#64748b;font-size:12.5px;">Apr 18, 2025</td>
+                                <td style="color:#64748b;font-size:12.5px;">1 week ago</td>
+                                <td><span class="badge badge-warning">Inactive</span></td>
+                                <td><div class="flex-center gap-8"><button class="btn btn-outline btn-xs">Edit</button><button class="btn btn-primary btn-xs" onclick="showToast('User activated', 'success')">Activate</button></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="flex-center gap-10"><div class="td-avatar" style="background:#eff6ff;color:#3b82f6;">LN</div><div><div class="td-name">Lena Nair</div><div class="td-muted">lena@mail.com</div></div></div></td>
+                                <td><span class="badge badge-info">Admin</span></td>
+                                <td>Enterprise</td>
+                                <td style="color:#64748b;font-size:12.5px;">May 22, 2025</td>
+                                <td style="color:#64748b;font-size:12.5px;">3 hrs ago</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td><div class="flex-center gap-8"><button class="btn btn-outline btn-xs">Edit</button><button class="btn btn-danger btn-xs">Suspend</button></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="overlay" class="overlay"></div>
+<div class="toast-wrap" id="toastWrap"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

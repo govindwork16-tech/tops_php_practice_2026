@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics &mdash; Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <span class="brand-name">AdminPanel</span>
+            </div>
+            <nav>
+                <div class="nav-group">
+                    <div class="nav-group-label">Main</div>
+                    <a href="index.html" class="nav-item"><i class="fa-solid fa-gauge nav-icon"></i> Dashboard</a>
+                    <a href="analytics.html" class="nav-item active"><i class="fa-solid fa-chart-line nav-icon"></i>
+                        Analytics</a>
+                    <a href="orders.html" class="nav-item"><i class="fa-solid fa-bag-shopping nav-icon"></i> Orders
+                        <span class="nav-badge red">12</span></a>
+                    <a href="products.html" class="nav-item"><i class="fa-solid fa-box nav-icon"></i> Products</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-label">Manage</div>
+                    <a href="users.html" class="nav-item"><i class="fa-solid fa-users nav-icon"></i> Users <span
+                            class="nav-badge">8</span></a>
+                    <a href="messages.html" class="nav-item"><i class="fa-solid fa-envelope nav-icon"></i> Messages
+                        <span class="nav-badge">3</span></a>
+                    <a href="reports.html" class="nav-item"><i class="fa-solid fa-file-lines nav-icon"></i> Reports</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-label">Account</div>
+                    <a href="profile.html" class="nav-item"><i class="fa-solid fa-circle-user nav-icon"></i> My
+                        Profile</a>
+                    <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear nav-icon"></i> Settings</a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div id="userDropdown" class="user-dropdown">
+                    <div class="dd-user-head">
+                        <div class="dd-name">John Carter</div>
+                        <div class="dd-email">john@admin.com</div>
+                    </div>
+                    <a href="profile.html" class="dd-link"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+                    <a href="settings.html" class="dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="#" class="dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                    <a href="#" class="dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                    <div class="dd-sep"></div>
+                    <a href="#" class="dd-link"><i class="fa-solid fa-circle-question"></i> Help &amp; Support</a>
+                    <a href="#" class="dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                </div>
+                <div class="user-toggle" id="userToggle">
+                    <div class="user-avatar">JC</div>
+                    <div class="user-meta">
+                        <div class="user-name">John Carter</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-up user-caret"></i>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main" id="main">
+
+            <header class="topbar">
+                <button class="topbar-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <div class="topbar-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search&hellip;">
+                </div>
+                <div class="topbar-right">
+                    <button class="tb-icon-btn"><i class="fa-solid fa-bell"></i><span class="tb-dot"></span></button>
+                    <button class="tb-icon-btn"><i class="fa-solid fa-envelope"></i></button>
+                    <div class="tb-user" id="tbUser">
+                        <div class="tb-avatar">JC</div>
+                        <div class="tb-user-text">
+                            <span class="tb-name">John Carter</span>
+                            <span class="tb-role">Administrator</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down tb-caret"></i>
+                        <div class="tb-dropdown" id="tbDropdown">
+                            <div class="tb-dd-head">
+                                <div class="tb-dd-name">John Carter</div>
+                                <div class="tb-dd-email">john@admin.com</div>
+                            </div>
+                            <a href="profile.html" class="tb-dd-link"><i class="fa-solid fa-circle-user"></i> My
+                                Profile</a>
+                            <a href="settings.html" class="tb-dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                            <a href="#" class="tb-dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                            <a href="#" class="tb-dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                            <a href="#" class="tb-dd-link"><i class="fa-solid fa-palette"></i> Appearance</a>
+                            <div class="tb-dd-sep"></div>
+                            <a href="#" class="tb-dd-link"><i class="fa-solid fa-headset"></i> Support</a>
+                            <a href="#" class="tb-dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log
+                                Out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <div class="page-header-row">
+                    <div>
+                        <div class="breadcrumb">
+                            <a href="index.html">Home</a>
+                            <i class="fa-solid fa-chevron-right sep"></i>
+                            <span class="current">Analytics</span>
+                        </div>
+                        <h1 class="page-title">Analytics</h1>
+                        <p class="page-sub">Track visitors, sessions and conversion metrics.</p>
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="ftab" onclick="setRange(this,'7 days')">7 Days</button>
+                        <button class="ftab active" onclick="setRange(this,'30 days')">30 Days</button>
+                        <button class="ftab" onclick="setRange(this,'90 days')">90 Days</button>
+                    </div>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon blue"><i class="fa-solid fa-eye"></i></div>
+                            <span class="stat-change up">&#8593; 18%</span>
+                        </div>
+                        <div class="stat-value">284k</div>
+                        <div class="stat-label">Page Views</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon green"><i class="fa-solid fa-user"></i></div>
+                            <span class="stat-change up">&#8593; 11%</span>
+                        </div>
+                        <div class="stat-value">18,420</div>
+                        <div class="stat-label">Unique Visitors</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon orange"><i class="fa-solid fa-clock"></i></div>
+                            <span class="stat-change up">&#8593; 6%</span>
+                        </div>
+                        <div class="stat-value">4m 12s</div>
+                        <div class="stat-label">Avg. Session</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon red"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                            <span class="stat-change down">&#8595; 3%</span>
+                        </div>
+                        <div class="stat-value">34.2%</div>
+                        <div class="stat-label">Bounce Rate</div>
+                    </div>
+                </div>
+
+                <!-- Visitors + Traffic Source -->
+                <div class="grid-6040 mb-16">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Visitors Overview</div>
+                                <div class="card-sub">Sessions vs new users, last 8 months</div>
+                            </div>
+                            <button class="btn btn-outline btn-sm" onclick="showToast('Exported!','success')">
+                                <i class="fa-solid fa-download"></i> Export
+                            </button>
+                        </div>
+                        <div class="chart-box" style="height:220px;">
+                            <canvas id="visitorsChart"></canvas>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span>
+                                Sessions</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#22c55e;"></span> New
+                                Users</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Traffic Sources</div>
+                                <div class="card-sub">This month</div>
+                            </div>
+                        </div>
+                        <div class="chart-box" style="height:170px;">
+                            <canvas id="sourceChart"></canvas>
+                        </div>
+                        <div class="legend-row" style="margin-top:16px;gap:10px 16px;">
+                            <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span>
+                                Organic 44%</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#22c55e;"></span> Direct
+                                28%</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span>
+                                Referral 16%</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#ef4444;"></span> Social
+                                12%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Device + Top pages + Countries -->
+                <div class="grid-3">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Sessions by Device</div>
+                                <div class="card-sub">Daily breakdown</div>
+                            </div>
+                        </div>
+                        <div class="chart-box" style="height:185px;">
+                            <canvas id="deviceChart"></canvas>
+                        </div>
+                        <div class="legend-row" style="margin-top:14px;">
+                            <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span>
+                                Desktop</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#22c55e;"></span> Mobile
+                            </div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> Tablet
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Top Pages</div>
+                        </div>
+                        <div>
+                            <div class="top-page-row">
+                                <span class="top-page-name">/dashboard</span>
+                                <div class="top-page-track">
+                                    <div class="top-page-fill" style="width:0" data-width="90%"></div>
+                                </div>
+                                <span class="top-page-val">84.2k</span>
+                            </div>
+                            <div class="top-page-row">
+                                <span class="top-page-name">/analytics</span>
+                                <div class="top-page-track">
+                                    <div class="top-page-fill" style="width:0" data-width="62%"></div>
+                                </div>
+                                <span class="top-page-val">52.4k</span>
+                            </div>
+                            <div class="top-page-row">
+                                <span class="top-page-name">/orders</span>
+                                <div class="top-page-track">
+                                    <div class="top-page-fill" style="width:0" data-width="49%"></div>
+                                </div>
+                                <span class="top-page-val">41.0k</span>
+                            </div>
+                            <div class="top-page-row">
+                                <span class="top-page-name">/users</span>
+                                <div class="top-page-track">
+                                    <div class="top-page-fill" style="width:0" data-width="34%"></div>
+                                </div>
+                                <span class="top-page-val">28.6k</span>
+                            </div>
+                            <div class="top-page-row">
+                                <span class="top-page-name">/products</span>
+                                <div class="top-page-track">
+                                    <div class="top-page-fill" style="width:0" data-width="22%"></div>
+                                </div>
+                                <span class="top-page-val">18.4k</span>
+                            </div>
+                            <div class="top-page-row">
+                                <span class="top-page-name">/settings</span>
+                                <div class="top-page-track">
+                                    <div class="top-page-fill" style="width:0" data-width="13%"></div>
+                                </div>
+                                <span class="top-page-val">11.3k</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Top Countries</div>
+                        </div>
+                        <div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127470;&#127475;</span>
+                                <span class="country-name">India</span>
+                                <span class="country-pct">38%</span>
+                            </div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127482;&#127480;</span>
+                                <span class="country-name">United States</span>
+                                <span class="country-pct">24%</span>
+                            </div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127468;&#127463;</span>
+                                <span class="country-name">United Kingdom</span>
+                                <span class="country-pct">12%</span>
+                            </div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127465;&#127466;</span>
+                                <span class="country-name">Germany</span>
+                                <span class="country-pct">9%</span>
+                            </div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127464;&#127462;</span>
+                                <span class="country-name">Canada</span>
+                                <span class="country-pct">7%</span>
+                            </div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127462;&#127482;</span>
+                                <span class="country-name">Australia</span>
+                                <span class="country-pct">5%</span>
+                            </div>
+                            <div class="country-row">
+                                <span class="country-flag">&#127467;&#127479;</span>
+                                <span class="country-name">France</span>
+                                <span class="country-pct">5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    <div class="toast-wrap" id="toastWrap"></div>
+    <script src="js/main.js"></script>
+    <script>
+        var cFont = { family: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', size: 11 };
+        var cGrid = '#f1f5f9';
+        var cTick = '#94a3b8';
+        var cTooltip = { backgroundColor: '#1e293b', titleColor: '#e2e8f0', bodyColor: '#94a3b8', padding: 10, cornerRadius: 6, titleFont: cFont, bodyFont: cFont };
+
+        function baseOpts() {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: cTooltip },
+                scales: {
+                    x: { grid: { color: cGrid }, ticks: { color: cTick, font: cFont } },
+                    y: { grid: { color: cGrid }, ticks: { color: cTick, font: cFont } }
+                }
+            };
+        }
+
+        var months = ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'];
+
+        new Chart(document.getElementById('visitorsChart'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'Sessions', data: [4200, 5100, 4800, 6400, 7200, 6600, 8100, 9400], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.08)', borderWidth: 2, fill: true, tension: 0.4, pointBackgroundColor: '#3b82f6', pointRadius: 3, pointHoverRadius: 5 },
+                    { label: 'New Users', data: [1800, 2200, 1900, 2800, 3100, 2700, 3500, 4200], borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', borderWidth: 2, fill: true, tension: 0.4, pointBackgroundColor: '#22c55e', pointRadius: 3, pointHoverRadius: 5 }
+                ]
+            },
+            options: baseOpts()
+        });
+
+        new Chart(document.getElementById('sourceChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Organic', 'Direct', 'Referral', 'Social'],
+                datasets: [{ data: [44, 28, 16, 12], backgroundColor: ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444'], borderWidth: 0, hoverOffset: 6 }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, cutout: '68%',
+                plugins: { legend: { display: false }, tooltip: Object.assign({}, cTooltip, { callbacks: { label: function (c) { return ' ' + c.label + ': ' + c.raw + '%'; } } }) }
+            }
+        });
+
+        new Chart(document.getElementById('deviceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [
+                    { label: 'Desktop', data: [820, 940, 860, 1120, 980, 460, 390], backgroundColor: '#3b82f6', borderRadius: 4, borderSkipped: false },
+                    { label: 'Mobile', data: [540, 620, 570, 740, 660, 310, 260], backgroundColor: '#22c55e', borderRadius: 4, borderSkipped: false },
+                    { label: 'Tablet', data: [150, 180, 160, 210, 190, 90, 70], backgroundColor: '#f59e0b', borderRadius: 4, borderSkipped: false }
+                ]
+            },
+            options: baseOpts()
+        });
+
+        function setRange(el, label) {
+            $('.ftab').removeClass('active');
+            $(el).addClass('active');
+            showToast('Showing data for ' + label, 'info');
+        }
+
+        setTimeout(function () {
+            $('[data-width]').each(function () { $(this).css('width', $(this).data('width')); });
+        }, 200);
+    </script>
+</body>
+
+</html>

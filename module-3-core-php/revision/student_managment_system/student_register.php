@@ -1,0 +1,177 @@
+<?php
+session_start();
+
+include_once('config.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Register</title>
+
+  <?php
+
+  if (isset($_POST['submit_btn'])) {
+    $student_name = $_POST['student_name'];
+    $student_email = $_POST['student_email'];
+    $student_phone = $_POST['student_phone'];
+    $student_password = base64_encode($_POST['student_password']);
+
+    $insert = "insert into students(student_name,student_email,student_phone,password) values('$student_name', '$student_email', '$student_phone', '$student_password')";
+
+    $insert_query = mysqli_query($connect, $insert);
+
+    if ($insert_query) {
+      echo "<script>
+        alert('User successfully registered') 
+        window.location = 'dashboard.php';
+        </script>";
+    }
+  }
+
+  ?>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #4facfe, #00f2fe);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      width: 420px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .input-group label {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      color: #777;
+      font-size: 14px;
+      background: #fff;
+      padding: 0 5px;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+
+    .input-group input:focus {
+      border-color: #4facfe;
+      box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+    }
+
+    .input-group input:focus+label,
+    .input-group input:valid+label {
+      top: -8px;
+      font-size: 12px;
+      color: #4facfe;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #4facfe;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00c6ff;
+      transform: scale(1.03);
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .link a {
+      text-decoration: none;
+      color: #4facfe;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>Student Register</h2>
+    <form method="post">
+
+      <div class="input-group">
+        <input type="text" name="student_name" required>
+        <label>Student Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="student_email" required>
+        <label>Email Address</label>
+      </div>
+
+      <div class="input-group">
+        <input type="number" name="student_phone" required>
+        <label>Phone Number</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="student_password" required>
+        <label>Password</label>
+      </div>
+
+      <input type="submit" name="submit_btn" value="Register" class="btn">
+
+      <div class="link">
+        <p>Already Have Account? <a href="login.php">Login</a></p>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

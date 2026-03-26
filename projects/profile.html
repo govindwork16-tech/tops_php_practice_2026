@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">A</div>
+            <span class="brand-name">AdminPanel</span>
+        </div>
+        <nav>
+            <div class="nav-group">
+                <div class="nav-group-label">Main</div>
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-gauge nav-icon"></i> Dashboard</a>
+                <a href="analytics.html" class="nav-item"><i class="fa-solid fa-chart-line nav-icon"></i> Analytics</a>
+                <a href="orders.html" class="nav-item"><i class="fa-solid fa-bag-shopping nav-icon"></i> Orders <span class="nav-badge red">12</span></a>
+                <a href="products.html" class="nav-item"><i class="fa-solid fa-box nav-icon"></i> Products</a>
+            </div>
+            <div class="nav-group">
+                <div class="nav-group-label">Manage</div>
+                <a href="users.html" class="nav-item"><i class="fa-solid fa-users nav-icon"></i> Users <span class="nav-badge">8</span></a>
+                <a href="messages.html" class="nav-item"><i class="fa-solid fa-envelope nav-icon"></i> Messages <span class="nav-badge">3</span></a>
+                <a href="reports.html" class="nav-item"><i class="fa-solid fa-file-lines nav-icon"></i> Reports</a>
+            </div>
+            <div class="nav-group">
+                <div class="nav-group-label">Account</div>
+                <a href="profile.html" class="nav-item active"><i class="fa-solid fa-circle-user nav-icon"></i> My Profile</a>
+                <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear nav-icon"></i> Settings</a>
+            </div>
+        </nav>
+        <div class="sidebar-footer">
+            <div id="userDropdown" class="user-dropdown">
+                <div class="dd-user-head">
+                    <div class="dd-name">John Carter</div>
+                    <div class="dd-email">john@admin.com</div>
+                </div>
+                <a href="profile.html" class="dd-link"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+                <a href="settings.html" class="dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                <a href="#" class="dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                <a href="#" class="dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                <div class="dd-sep"></div>
+                <a href="#" class="dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+            </div>
+            <div class="user-toggle" id="userToggle">
+                <div class="user-avatar">JC</div>
+                <div class="user-meta">
+                    <div class="user-name">John Carter</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+                <i class="fa-solid fa-chevron-up user-caret"></i>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main" id="main">
+        <header class="topbar">
+            <button class="topbar-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+            <div class="topbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search…"></div>
+            <div class="topbar-right">
+                <button class="tb-icon-btn"><i class="fa-solid fa-bell"></i><span class="tb-dot"></span></button>
+                <button class="tb-icon-btn"><i class="fa-solid fa-envelope"></i></button>
+                <div class="tb-user" id="tbUser">
+                    <div class="tb-avatar">JC</div>
+                    <div class="tb-user-text">
+                        <span class="tb-name">John Carter</span>
+                        <span class="tb-role">Administrator</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down tb-caret"></i>
+                    <div class="tb-dropdown" id="tbDropdown">
+                        <div class="tb-dd-head">
+                            <div class="tb-dd-name">John Carter</div>
+                            <div class="tb-dd-email">john@admin.com</div>
+                        </div>
+                        <a href="profile.html" class="tb-dd-link"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+                        <a href="settings.html" class="tb-dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="tb-dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                        <a href="#" class="tb-dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                        <div class="tb-dd-sep"></div>
+                        <a href="#" class="tb-dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="page-header-row">
+                <div>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <i class="fa-solid fa-chevron-right sep"></i>
+                        <span class="current">My Profile</span>
+                    </div>
+                    <h1 class="page-title">My Profile</h1>
+                    <p class="page-sub">Manage your personal information.</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Profile saved!', 'success')">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+            </div>
+
+            <div class="grid-6040" style="align-items:start;">
+
+                <!-- Left: profile card + activity -->
+                <div style="display:flex;flex-direction:column;gap:16px;">
+
+                    <div class="card">
+                        <div class="section-heading">Personal Information</div>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input class="form-control" type="text" value="John">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input class="form-control" type="text" value="Carter">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input class="form-control" type="email" value="john@admin.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input class="form-control" type="tel" value="+91 98765 43210">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Job Title</label>
+                            <input class="form-control" type="text" value="System Administrator">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Department</label>
+                            <input class="form-control" type="text" value="Engineering">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Bio</label>
+                            <textarea class="form-control" rows="3">Managing the platform and keeping things running smoothly.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-heading">Location</div>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label class="form-label">Country</label>
+                                <select class="form-control">
+                                    <option selected>India</option>
+                                    <option>United States</option>
+                                    <option>United Kingdom</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">City</label>
+                                <input class="form-control" type="text" value="Rajkot, Gujarat">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Time Zone</label>
+                            <select class="form-control">
+                                <option selected>Asia/Kolkata (IST +5:30)</option>
+                                <option>UTC</option>
+                                <option>America/New_York</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: summary + activity -->
+                <div style="display:flex;flex-direction:column;gap:16px;">
+
+                    <div class="profile-card">
+                        <div class="profile-cover"></div>
+                        <div class="profile-body">
+                            <div class="profile-avatar-wrap">
+                                <div class="profile-avatar">JC</div>
+                            </div>
+                            <div class="profile-name">John Carter</div>
+                            <div class="profile-role">Administrator · john@admin.com</div>
+                            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+                                <span class="badge badge-info">Admin</span>
+                                <span class="badge badge-success">Active</span>
+                            </div>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="pstat">
+                                <div class="pstat-val">142</div>
+                                <div class="pstat-lbl">Tasks Done</div>
+                            </div>
+                            <div class="pstat">
+                                <div class="pstat-val">8.3k</div>
+                                <div class="pstat-lbl">Users</div>
+                            </div>
+                            <div class="pstat">
+                                <div class="pstat-val">94%</div>
+                                <div class="pstat-lbl">Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-heading">Social Links</div>
+                        <div class="form-group">
+                            <label class="form-label"><i class="fa-brands fa-github" style="margin-right:5px;"></i>GitHub</label>
+                            <input class="form-control" type="text" value="github.com/johncarter">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><i class="fa-brands fa-linkedin" style="margin-right:5px;"></i>LinkedIn</label>
+                            <input class="form-control" type="text" value="linkedin.com/in/johncarter">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><i class="fa-brands fa-x-twitter" style="margin-right:5px;"></i>Twitter / X</label>
+                            <input class="form-control" type="text" value="@johncarter">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-heading">Recent Activity</div>
+                        <div class="activity-list">
+                            <div class="act-item">
+                                <div class="act-icon blue"><i class="fa-solid fa-right-to-bracket"></i></div>
+                                <div>
+                                    <div class="act-text"><strong>Logged in</strong> from Rajkot, IN</div>
+                                    <div class="act-time">Today, 9:14 AM</div>
+                                </div>
+                            </div>
+                            <div class="act-item">
+                                <div class="act-icon green"><i class="fa-solid fa-floppy-disk"></i></div>
+                                <div>
+                                    <div class="act-text"><strong>Profile updated</strong></div>
+                                    <div class="act-time">Mar 22, 2026</div>
+                                </div>
+                            </div>
+                            <div class="act-item">
+                                <div class="act-icon orange"><i class="fa-solid fa-lock"></i></div>
+                                <div>
+                                    <div class="act-text"><strong>Password changed</strong></div>
+                                    <div class="act-time">Mar 10, 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay" class="overlay"></div>
+<div class="toast-wrap" id="toastWrap"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

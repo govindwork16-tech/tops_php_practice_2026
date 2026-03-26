@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings — Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <span class="brand-name">AdminPanel</span>
+            </div>
+            <nav>
+                <div class="nav-group">
+                    <div class="nav-group-label">Main</div>
+                    <a href="index.html" class="nav-item"><i class="fa-solid fa-gauge nav-icon"></i> Dashboard</a>
+                    <a href="analytics.html" class="nav-item"><i class="fa-solid fa-chart-line nav-icon"></i>
+                        Analytics</a>
+                    <a href="orders.html" class="nav-item"><i class="fa-solid fa-bag-shopping nav-icon"></i> Orders
+                        <span class="nav-badge red">12</span></a>
+                    <a href="products.html" class="nav-item"><i class="fa-solid fa-box nav-icon"></i> Products</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-label">Manage</div>
+                    <a href="users.html" class="nav-item"><i class="fa-solid fa-users nav-icon"></i> Users <span
+                            class="nav-badge">8</span></a>
+                    <a href="messages.html" class="nav-item"><i class="fa-solid fa-envelope nav-icon"></i> Messages
+                        <span class="nav-badge">3</span></a>
+                    <a href="reports.html" class="nav-item"><i class="fa-solid fa-file-lines nav-icon"></i> Reports</a>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-label">Account</div>
+                    <a href="profile.html" class="nav-item"><i class="fa-solid fa-circle-user nav-icon"></i> My
+                        Profile</a>
+                    <a href="settings.html" class="nav-item active"><i class="fa-solid fa-gear nav-icon"></i>
+                        Settings</a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div id="userDropdown" class="user-dropdown">
+                    <div class="dd-user-head">
+                        <div class="dd-name">John Carter</div>
+                        <div class="dd-email">john@admin.com</div>
+                    </div>
+                    <a href="profile.html" class="dd-link"><i class="fa-solid fa-circle-user"></i> My Profile</a>
+                    <a href="settings.html" class="dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="#" class="dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                    <a href="#" class="dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                    <div class="dd-sep"></div>
+                    <a href="#" class="dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                </div>
+                <div class="user-toggle" id="userToggle">
+                    <div class="user-avatar">JC</div>
+                    <div class="user-meta">
+                        <div class="user-name">John Carter</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-up user-caret"></i>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main" id="main">
+            <header class="topbar">
+                <button class="topbar-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <div class="topbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text"
+                        placeholder="Search settings…"></div>
+                <div class="topbar-right">
+                    <button class="tb-icon-btn"><i class="fa-solid fa-bell"></i><span class="tb-dot"></span></button>
+                    <button class="tb-icon-btn"><i class="fa-solid fa-envelope"></i></button>
+                    <div class="tb-user" id="tbUser">
+                        <div class="tb-avatar">JC</div>
+                        <div class="tb-user-text">
+                            <span class="tb-name">John Carter</span>
+                            <span class="tb-role">Administrator</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down tb-caret"></i>
+                        <div class="tb-dropdown" id="tbDropdown">
+                            <div class="tb-dd-head">
+                                <div class="tb-dd-name">John Carter</div>
+                                <div class="tb-dd-email">john@admin.com</div>
+                            </div>
+                            <a href="profile.html" class="tb-dd-link"><i class="fa-solid fa-circle-user"></i> My
+                                Profile</a>
+                            <a href="settings.html" class="tb-dd-link"><i class="fa-solid fa-gear"></i> Settings</a>
+                            <a href="#" class="tb-dd-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+                            <a href="#" class="tb-dd-link"><i class="fa-solid fa-shield-halved"></i> Security</a>
+                            <div class="tb-dd-sep"></div>
+                            <a href="#" class="tb-dd-link danger"><i class="fa-solid fa-right-from-bracket"></i> Log
+                                Out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="page-header-row">
+                    <div>
+                        <div class="breadcrumb">
+                            <a href="index.html">Home</a>
+                            <i class="fa-solid fa-chevron-right sep"></i>
+                            <span class="current">Settings</span>
+                        </div>
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-sub">Manage your workspace and account preferences.</p>
+                    </div>
+                </div>
+
+                <!-- Tab nav -->
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="general">General</button>
+                    <button class="tab-btn" data-tab="notifications">Notifications</button>
+                    <button class="tab-btn" data-tab="security">Security</button>
+                    <button class="tab-btn" data-tab="integrations">Integrations</button>
+                </div>
+
+                <!-- GENERAL -->
+                <div class="tab-panel active" id="tab-general">
+                    <div class="grid-2" style="align-items:start;">
+                        <div style="display:flex;flex-direction:column;gap:16px;">
+                            <div class="card">
+                                <div class="section-heading">Workspace Info</div>
+                                <div class="form-group">
+                                    <label class="form-label">Workspace Name</label>
+                                    <input class="form-control" type="text" value="My Admin Panel">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Website</label>
+                                    <input class="form-control" type="url" value="https://example.com">
+                                </div>
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <label class="form-label">Industry</label>
+                                        <select class="form-control">
+                                            <option selected>Technology</option>
+                                            <option>Finance</option>
+                                            <option>Healthcare</option>
+                                            <option>Education</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Team Size</label>
+                                        <select class="form-control">
+                                            <option>1–10</option>
+                                            <option selected>11–50</option>
+                                            <option>51–200</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Description</label>
+                                    <textarea
+                                        class="form-control">A simple and clean admin panel for managing our platform.</textarea>
+                                </div>
+                                <button class="btn btn-primary btn-sm"
+                                    onclick="showToast('Settings saved!', 'success')">
+                                    <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                                </button>
+                            </div>
+
+                            <div class="danger-zone">
+                                <div class="section-heading">Danger Zone</div>
+                                <p style="font-size:13px;color:#64748b;margin-bottom:14px;">Once you delete the
+                                    workspace, there is no going back. Please be certain.</p>
+                                <button class="btn btn-danger btn-sm"
+                                    onclick="showToast('Confirmation email sent', 'warning')">
+                                    <i class="fa-solid fa-trash"></i> Delete Workspace
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="section-heading">Preferences</div>
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <h4>Compact Sidebar</h4>
+                                    <p>Show only icons in sidebar</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <h4>Auto-save drafts</h4>
+                                    <p>Save form data automatically</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <h4>Show breadcrumbs</h4>
+                                    <p>Display page path at top</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-group mt-16">
+                                <label class="form-label">Language</label>
+                                <select class="form-control">
+                                    <option>English (US)</option>
+                                    <option>English (UK)</option>
+                                    <option>Hindi</option>
+                                    <option>Gujarati</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Time Zone</label>
+                                <select class="form-control">
+                                    <option>Asia/Kolkata (IST +5:30)</option>
+                                    <option>UTC</option>
+                                    <option>America/New_York (EST)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Date Format</label>
+                                <select class="form-control">
+                                    <option>DD/MM/YYYY</option>
+                                    <option>MM/DD/YYYY</option>
+                                    <option>YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOTIFICATIONS -->
+                <div class="tab-panel" id="tab-notifications">
+                    <div class="card" style="max-width:680px;">
+                        <div class="section-heading">Notification Preferences</div>
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <h4>Email Notifications</h4>
+                                <p>Receive all alerts by email</p>
+                            </div>
+                            <label class="toggle"><input type="checkbox" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <h4>New Order Alerts</h4>
+                                <p>Notify me on every new order</p>
+                            </div>
+                            <label class="toggle"><input type="checkbox" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <h4>Weekly Summary</h4>
+                                <p>Receive a weekly digest email</p>
+                            </div>
+                            <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <h4>Security Alerts</h4>
+                                <p>New logins or suspicious activity</p>
+                            </div>
+                            <label class="toggle"><input type="checkbox" checked><span
+                                    class="toggle-slider"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <h4>Marketing Emails</h4>
+                                <p>Product news and tips</p>
+                            </div>
+                            <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
+                        </div>
+                        <div style="margin-top:18px;">
+                            <button class="btn btn-primary btn-sm"
+                                onclick="showToast('Notification preferences saved', 'success')">
+                                <i class="fa-solid fa-floppy-disk"></i> Save Preferences
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECURITY -->
+                <div class="tab-panel" id="tab-security">
+                    <div class="grid-2" style="align-items:start;">
+                        <div class="card">
+                            <div class="section-heading">Change Password</div>
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input class="form-control" type="password" placeholder="Enter current password">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input class="form-control" type="password" placeholder="Min. 8 characters">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirm Password</label>
+                                <input class="form-control" type="password" placeholder="Repeat new password">
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="showToast('Password updated!', 'success')">
+                                <i class="fa-solid fa-lock"></i> Update Password
+                            </button>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:16px;">
+                            <div class="card">
+                                <div class="section-heading">Two-Factor Authentication</div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Enable 2FA</h4>
+                                        <p>Extra login security</p>
+                                    </div>
+                                    <label class="toggle"><input type="checkbox" checked><span
+                                            class="toggle-slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Authenticator App</h4>
+                                        <p>Google Auth, Authy etc.</p>
+                                    </div>
+                                    <label class="toggle"><input type="checkbox" checked><span
+                                            class="toggle-slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>SMS Backup</h4>
+                                        <p>Receive codes via SMS</p>
+                                    </div>
+                                    <label class="toggle"><input type="checkbox"><span
+                                            class="toggle-slider"></span></label>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="section-heading">Active Sessions</div>
+                                <div style="display:flex;flex-direction:column;gap:12px;">
+                                    <div class="flex-between">
+                                        <div>
+                                            <div style="font-size:13px;font-weight:600;color:#1e293b;">Chrome — Rajkot,
+                                                IN</div>
+                                            <div class="td-muted">Current session · Now</div>
+                                        </div>
+                                        <span class="badge badge-success">Active</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <div>
+                                            <div style="font-size:13px;font-weight:600;color:#1e293b;">Safari — Mumbai,
+                                                IN</div>
+                                            <div class="td-muted">Mar 24, 2026</div>
+                                        </div>
+                                        <button class="btn btn-outline btn-xs"
+                                            onclick="showToast('Session revoked', 'warning')">Revoke</button>
+                                    </div>
+                                    <div class="flex-between">
+                                        <div>
+                                            <div style="font-size:13px;font-weight:600;color:#1e293b;">Firefox — Delhi,
+                                                IN</div>
+                                            <div class="td-muted">Mar 20, 2026</div>
+                                        </div>
+                                        <button class="btn btn-outline btn-xs"
+                                            onclick="showToast('Session revoked', 'warning')">Revoke</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTEGRATIONS -->
+                <div class="tab-panel" id="tab-integrations">
+                    <div class="grid-3">
+                        <div class="integration-card">
+                            <div class="flex-between">
+                                <div class="flex-center gap-10">
+                                    <div class="integration-icon" style="background:#4285f4;"><i
+                                            class="fa-brands fa-google"></i></div>
+                                    <div>
+                                        <div style="font-size:13.5px;font-weight:600;color:#1e293b;">Google</div>
+                                        <div class="td-muted">Connected</div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-success">On</span>
+                            </div>
+                            <p style="font-size:12.5px;color:#64748b;">Sync calendar and Drive files.</p>
+                            <button class="btn btn-outline btn-sm">Manage</button>
+                        </div>
+                        <div class="integration-card">
+                            <div class="flex-between">
+                                <div class="flex-center gap-10">
+                                    <div class="integration-icon" style="background:#4a154b;"><i
+                                            class="fa-brands fa-slack"></i></div>
+                                    <div>
+                                        <div style="font-size:13.5px;font-weight:600;color:#1e293b;">Slack</div>
+                                        <div class="td-muted">Connected</div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-success">On</span>
+                            </div>
+                            <p style="font-size:12.5px;color:#64748b;">Send alerts to channels.</p>
+                            <button class="btn btn-outline btn-sm">Manage</button>
+                        </div>
+                        <div class="integration-card">
+                            <div class="flex-between">
+                                <div class="flex-center gap-10">
+                                    <div class="integration-icon" style="background:#635bff;"><i
+                                            class="fa-brands fa-stripe-s"></i></div>
+                                    <div>
+                                        <div style="font-size:13.5px;font-weight:600;color:#1e293b;">Stripe</div>
+                                        <div class="td-muted">Connected</div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-success">On</span>
+                            </div>
+                            <p style="font-size:12.5px;color:#64748b;">Process payments.</p>
+                            <button class="btn btn-outline btn-sm">Manage</button>
+                        </div>
+                        <div class="integration-card">
+                            <div class="flex-between">
+                                <div class="flex-center gap-10">
+                                    <div class="integration-icon" style="background:#0052cc;"><i
+                                            class="fa-brands fa-jira"></i></div>
+                                    <div>
+                                        <div style="font-size:13.5px;font-weight:600;color:#1e293b;">Jira</div>
+                                        <div class="td-muted">Not connected</div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-neutral">Off</span>
+                            </div>
+                            <p style="font-size:12.5px;color:#64748b;">Sync tasks and sprints.</p>
+                            <button class="btn btn-primary btn-sm" onclick="showToast('Jira connected!', 'success')"><i
+                                    class="fa-solid fa-plug"></i> Connect</button>
+                        </div>
+                        <div class="integration-card">
+                            <div class="flex-between">
+                                <div class="flex-center gap-10">
+                                    <div class="integration-icon" style="background:#171515;"><i
+                                            class="fa-brands fa-github"></i></div>
+                                    <div>
+                                        <div style="font-size:13.5px;font-weight:600;color:#1e293b;">GitHub</div>
+                                        <div class="td-muted">Connected</div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-success">On</span>
+                            </div>
+                            <p style="font-size:12.5px;color:#64748b;">Track deployments.</p>
+                            <button class="btn btn-outline btn-sm">Manage</button>
+                        </div>
+                        <div class="integration-card">
+                            <div class="flex-between">
+                                <div class="flex-center gap-10">
+                                    <div class="integration-icon" style="background:#ff6c37;"><i
+                                            class="fa-solid fa-paper-plane"></i></div>
+                                    <div>
+                                        <div style="font-size:13.5px;font-weight:600;color:#1e293b;">Postmark</div>
+                                        <div class="td-muted">Not connected</div>
+                                    </div>
+                                </div>
+                                <span class="badge badge-neutral">Off</span>
+                            </div>
+                            <p style="font-size:12.5px;color:#64748b;">Transactional email delivery.</p>
+                            <button class="btn btn-primary btn-sm"
+                                onclick="showToast('Postmark connected!', 'success')"><i class="fa-solid fa-plug"></i>
+                                Connect</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    <div class="toast-wrap" id="toastWrap"></div>
+    <script src="js/main.js"></script>
+    <script>
+        $(function () {
+            $('.tab-btn').on('click', function () {
+                var tab = $(this).data('tab');
+                $('.tab-btn').removeClass('active');
+                $(this).addClass('active');
+                $('.tab-panel').removeClass('active');
+                $('#tab-' + tab).addClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
