@@ -21,26 +21,6 @@ if (isset($_POST['register_btn'])) {
   }
 }
 
-// Login
-
-if (isset($_POST['login_btn'])) {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $login = user_login($email, $password);
-
-  if ($login) {
-    header('location: home.php');
-  } else {
-    echo "<script>alert('Email Or Password are Incorrect'); window.location = 'index.php';</script>";
-  }
-}
-
-// if (!isset($_SESSION['user_id'])) {
-//   header('location: index.php');
-// }else {
-//   echo "Not Working";
-// }
-
 ?>
 
 <!DOCTYPE html>
@@ -81,31 +61,6 @@ if (isset($_POST['login_btn'])) {
           <div class="auth-tab active" onclick="switchTab('login', this)">Login</div>
           <div class="auth-tab" onclick="switchTab('register', this)">Register</div>
         </div>
-
-        <!-- Login Form -->
-        <form method="post">
-          <div id="form-login">
-            <div class="social-auth">
-              <button class="social-auth-btn">🔵 Google</button>
-              <button class="social-auth-btn">⬛ Facebook</button>
-            </div>
-            <div class="divider">or continue with email</div>
-            <div class="form-group"><label>Email Address</label><input name="email" type="email" class="form-control"
-                placeholder="you@email.com"></div>
-            <div class="form-group"><label>Password</label><input name="password" type="password" class="form-control"
-                placeholder="••••••••"></div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;font-size:14px">
-              <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox"
-                  style="accent-color:var(--clr-accent)"> Remember me</label>
-              <a href="#" style="color:var(--clr-accent)">Forgot password?</a>
-            </div>
-            <button name="login_btn" type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:15px">Login to
-              Account</button>
-            <p style="text-align:center;margin-top:20px;font-size:14px;color:var(--clr-mid)">Don't have an account? <a
-                href="register.php" style="color:var(--clr-accent);font-weight:600"
-                onclick="event.preventDefault();document.querySelectorAll('.auth-tab')[1].click()">Register →</a></p>
-          </div>
-        </form>
 
         <!-- Register Form (hidden by default in register.php) -->
         <form method="post">
@@ -158,14 +113,9 @@ if (isset($_POST['login_btn'])) {
                 <label>State</label>
                 <select name="state" class="form-control" required>
                   <option value="">Select State</option>
-                  <?php 
-                    $country_select = select_state();
-                    foreach ($country_select as $row) {
-                      ?>
-                      <option value="<?php echo $row['state_id'] ?>"><?php echo $row['state_name'] ?></option>
-                      <?php
-                    }
-                  ?>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Delhi">Delhi</option>
                 </select>
               </div>
             </div>
@@ -177,14 +127,9 @@ if (isset($_POST['login_btn'])) {
               <label>City</label>
               <select name="city" class="form-control" required>
                 <option value="">Select City</option>
-                <?php 
-                    $country_select = select_city();
-                    foreach ($country_select as $row) {
-                      ?>
-                      <option value="<?php echo $row['city_id'] ?>"><?php echo $row['city_name'] ?></option>
-                      <?php
-                    }
-                  ?>
+                <option value="Rajkot">Rajkot</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Surat">Surat</option>
               </select>
             </div>
 

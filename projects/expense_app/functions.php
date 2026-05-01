@@ -24,7 +24,7 @@ function insert_expense($name, $category_name, $description, $amount, $date)
 {
   global $connection;
 
-  $insert = "INSERT into tbl_add_expense(name,category, description, amount, add_date_and_time) values('$name', '$category_name', '$description','$amount', '$date')";
+  $insert = "INSERT into tbl_add_expense(name,category_id, description, amount, add_date_and_time) values('$name', '$category_name', '$description','$amount', '$date')";
 
   $insert_query = mysqli_query($connection, $insert);
 
@@ -41,7 +41,7 @@ function get_expense()
 {
   global $connection;
 
-  $select = "SELECT tbl_add_expense.*, tbl_expense_category.category_name FROM tbl_add_expense JOIN tbl_expense_category ON tbl_add_expense.category = tbl_expense_category.category_id";
+  $select = "SELECT tbl_add_expense.*, tbl_expense_category.category_name FROM tbl_add_expense JOIN tbl_expense_category ON tbl_add_expense.category_id = tbl_expense_category.category_id";
 
   $select_query = mysqli_query($connection, $select);
 
@@ -63,7 +63,7 @@ function edit_expense($get_id)
   global $connection;
   $get_id = $_GET['expense_id'];
 
-  $edit_select = "SELECT * from tbl_add_expense where expense_id = '$get_id'";
+  $edit_select = "SELECT tbl_add_expense.*, tbl_expense_category.category_name FROM tbl_add_expense JOIN tbl_expense_category ON tbl_add_expense.category_id = tbl_expense_category.category_id where expense_id = '$get_id'";
   $edit_query = mysqli_query($connection, $edit_select);
   
   while($fetch = mysqli_fetch_array($edit_query)) {

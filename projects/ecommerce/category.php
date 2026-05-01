@@ -1,23 +1,11 @@
 <?php
 
-require_once('include/config.php');
+require_once 'admin/functions.php';
 require_once('include/header.php');
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ShopNova – Categories</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
 
 <body>
   <main>
@@ -77,65 +65,9 @@ require_once('include/header.php');
             </div>
           </a>
         </div>
-        <div class="section-header">
-          <div class="eyebrow">Explore More</div>
-          <h2>Sub Categories</h2>
-        </div>
-        <div class="sub-cat-grid">
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">📱</div>
-            <p>Mobiles</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">💻</div>
-            <p>Laptops</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">⌚</div>
-            <p>Watches</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">🎧</div>
-            <p>Audio</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">📷</div>
-            <p>Cameras</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">🖥️</div>
-            <p>Monitors</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">👟</div>
-            <p>Shoes</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">👕</div>
-            <p>T-Shirts</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">👜</div>
-            <p>Bags</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">🕶️</div>
-            <p>Sunglasses</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">🧴</div>
-            <p>Skincare</p>
-          </a>
-          <a href="products.php" class="sub-cat">
-            <div class="emoji">🪑</div>
-            <p>Furniture</p>
-          </a>
-        </div>
       </div>
     </section>
   </main>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="js/main.js"></script>
 </body>
 
 <?php

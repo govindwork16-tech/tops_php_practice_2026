@@ -1,23 +1,9 @@
 <?php
 
-require_once('include/config.php');
+require_once 'admin/functions.php';
 require_once('include/header.php');
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ShopNova – My Orders</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
 
 <body>
   <main>
@@ -27,7 +13,7 @@ require_once('include/header.php');
         <div class="account-layout">
           <div class="account-nav">
             <a href="orders.php" class="account-nav-item active">📦 My Orders</a>
-            <a href="#" class="account-nav-item">👤 Profile</a>
+            <a href="account_details.php" class="account-nav-item">👤 Profile</a>
             <a href="#" class="account-nav-item">📍 Addresses</a>
             <a href="#" class="account-nav-item">❤️ Wishlist</a>
             <a href="#" class="account-nav-item">🔔 Notifications</a>
@@ -89,8 +75,6 @@ require_once('include/header.php');
       </div>
     </section>
   </main>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="js/main.js"></script>
 </body>
 
 <?php

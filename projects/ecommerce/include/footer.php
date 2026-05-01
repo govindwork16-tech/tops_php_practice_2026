@@ -26,7 +26,6 @@
           <li><a href="about.php">About Us</a></li>
           <li><a href="products.php">Shop</a></li>
           <li><a href="blogs.php">Blog</a></li>
-          <li><a href="career.php">Careers</a></li>
           <li><a href="contact.php">Contact</a></li>
         </ul>
       </div>
@@ -35,7 +34,7 @@
         <ul>
           <li><a href="faq.php">FAQ</a></li>
           <li><a href="orders.php">Track Order</a></li>
-          <li><a href="login.php">My Account</a></li>
+          <li><a href="account_details.php">My Account</a></li>
           <li><a href="privacy.php">Privacy Policy</a></li>
           <li><a href="terms.php">Terms &amp; Conditions</a></li>
         </ul>

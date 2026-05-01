@@ -1,6 +1,6 @@
 <?php 
 require_once('include/config.php');
-require_once('include/functions.php');
+require_once('functions.php');
 
 
 ?>
@@ -37,10 +37,6 @@ if (isset($_POST['admin_login'])) {
   <form method="post" class="login-card">
     <div class="login-logo">Shop<span>Nova</span></div>
     <div class="login-sub">Admin Panel Login</div>
-
-    <!-- <?php if(isset($error)){ ?>
-      <div class="login-error"><?php echo $error; ?></div>
-    <?php } ?> -->
 
     <div class="form-group">
       <label class="form-label">Email</label>

@@ -189,7 +189,7 @@ if (isset($_GET['delete_id'])) {
                     <td>
                       <div class="d-flex justify-content-center gap-2">
                         <a href="edit.php?edit_id=<?php echo $values['player_id']; ?>" class="btn btn-sm btn-warning px-3">✏️ Edit</a>
-                        <a href="index.php?delete_id=<?php echo $values['player_id']; ?>" onclick="confirm('Are You Sure?');" class="btn btn-sm btn-danger px-3">🗑️ Delete</a>
+                        <a href="index.php?delete_id=<?php echo $values['player_id']; ?>" onclick="return confirm('Are You Sure?');" class="btn btn-sm btn-danger px-3">🗑️ Delete</a>
                       </div>
                     </td>
                   </tr>

@@ -78,7 +78,7 @@ if (isset($_GET['logout'])) {
       <div class="hdr-dropdown">
         <a href="profile.php">My Profile</a>
         <a href="changepassword.php">Change Password</a>
-        <a href="index.php?logout=true" name="logout" onclick="alert('Are You Sure You Want To Logout?')">Logout</a>
+        <a href="index.php?logout=1" onclick="alert('Are You Sure You Want To Logout?')">Logout</a>
       </div>
     </div>
   </div>

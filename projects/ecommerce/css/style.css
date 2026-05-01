@@ -52,7 +52,7 @@ a {
 
 img {
   max-width: 100%;
-  display: block;
+  display: block; 
 }
 
 button {
@@ -133,6 +133,8 @@ h3 {
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: var(--transition);
+  text-align: center;
+  justify-content: center;
 }
 
 .btn-primary {
@@ -144,6 +146,13 @@ h3 {
   background: #a8401d;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(200, 80, 42, 0.3);
+}
+
+.btn-out-of-stock {
+  background: red;
+  color: #fff;
+  text-align: center;
+  pointer-events: none;
 }
 
 .btn-outline {
@@ -188,6 +197,11 @@ h3 {
 .badge-success {
   background: #e3f2ec;
   color: var(--clr-success);
+}
+
+.badge-danger {
+  background: red;
+  color: #fff;
 }
 
 .badge-neutral {
@@ -591,6 +605,10 @@ select.form-control {
 
 .product-card__btn:hover {
   background: var(--clr-accent);
+}
+
+.btn-out-of-stock {
+  background-color: red;
 }
 
 .product-card__wish {
@@ -1675,7 +1693,8 @@ select.form-control {
 .accordion-body {
   display: none;
   padding: 20px 24px;
-  padding-top: 0px;;
+  padding-top: 0px;
+  ;
   font-size: 14px;
   color: var(--clr-mid);
   line-height: 1.8;
@@ -1973,6 +1992,71 @@ select.form-control {
   color: #c0392b;
 }
 
+.blog-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  transition: var(--transition);
+}
+
+.blog-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.blog-img {
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.blog-body {
+  padding: 24px;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--clr-light);
+  margin-bottom: 10px;
+}
+
+.blog-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  transition: var(--transition);
+}
+
+.blog-card:hover h3 {
+  color: var(--clr-accent);
+}
+
+.blog-body p {
+  font-size: 14px;
+  color: var(--clr-mid);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+
+}
+
+.blog-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.blog-featured .blog-img {
+  aspect-ratio: 3/2;
+}
+
 @media(max-width:768px) {
   .account-layout {
     grid-template-columns: 1fr;
@@ -2125,7 +2209,6 @@ select.form-control {
 
 .gallery-main {
   aspect-ratio: 1;
-  background: linear-gradient(135deg, #e8d8c8, #d0bfa8);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
@@ -2168,7 +2251,7 @@ select.form-control {
 .product-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 5px;
   margin-bottom: 20px;
   color: var(--clr-mid);
   font-size: 14px;

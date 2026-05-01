@@ -3,19 +3,10 @@
      Paste inside .admin-shell before .admin-main
      ============================================= -->
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ShopNova Admin — Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+require_once('functions.php');
+require_once('include/header.php');
+?>
 
 <aside class="sidebar">
   <div class="sidebar-brand">
@@ -44,11 +35,7 @@
     <div class="sidebar-section-label">Catalogue</div>
     <nav class="sidebar-nav">
       <a href="add_category.php" class="nav-item">Add Category</a>
-      <a href="manage_category.php" class="nav-item">Manage Categories</a>
-      <a href="add_sub_category.php" class="nav-item">Add Sub-Category</a>
-      <a href="manage_sub_category.php" class="nav-item">Manage Sub-Category</a>
       <a href="add_products.php" class="nav-item">Add Products</a>
-      <a href="manage_products.php" class="nav-item">Manage Products</a>
     </nav>
   </div>
 
@@ -64,7 +51,7 @@
   <div class="sidebar-section">
     <div class="sidebar-section-label">System</div>
     <nav class="sidebar-nav">
-      <a href="index.php" class="nav-item">Logout</a>
+      <a href="index.php?logout" class="nav-item">Logout</a>
     </nav>
   </div>
 

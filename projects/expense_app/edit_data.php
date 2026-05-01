@@ -35,7 +35,7 @@ if (isset($_GET['expense_id'])) {
       <!-- Category -->
       <div class="group">
         <label class="block text-sm font-medium mb-1">Category</label>
-        <select name="category_name" value="<?php $edit_user[0]['category_id'] ?>"
+        <select name="category_name"
           class="w-full p-3 rounded-lg border border-gray-300 outline-none 
                  focus:ring-2 focus:ring-blue-500 transition duration-300
                  group-hover:scale-[1.01]">
@@ -44,10 +44,18 @@ if (isset($_GET['expense_id'])) {
           $arr = get_category();
 
           foreach ($arr as $values) {
+            if (($values["category_id"] == $edit_user[0]["category_id"])) {
           ?>
-
-            <option value="<?php echo $values["category_id"]; ?>"><?php echo $values["category_name"]; ?></option>
-
+              <option value="<?php echo $values["category_id"]; ?>" selected><?php echo $values["category_name"]; ?></option>
+            <?php
+            } else {
+            ?>
+              <option value="<?php echo $values["category_id"]; ?>">
+                <?php echo $values["category_name"]; ?>
+              </option>
+            <?php
+            }
+            ?>
           <?php
           }
           ?>

@@ -599,6 +599,7 @@ table {
   transition: var(--ease);
   border: 1.5px solid transparent;
   white-space: nowrap;
+  justify-content: center;
 }
 
 .btn svg {

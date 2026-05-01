@@ -1,10 +1,64 @@
 <?php
 
-require_once('include/config.php');
+
+require_once('functions.php');
+if (isset($_POST['save_category'])) {
+  $category_name = $_POST['category_name'];
+  $add_category = add_category($category_name);
+  
+  if ($add_category) {
+    header('location: add_category.php');
+  }else {
+    echo "<script>alert('Something Went Wrong'); window.location = 'add_category.php';</script>";
+  }
+}
+
+if (isset($_GET['delete'])) {
+  $delete = $_GET['delete'];
+  $delete_category = del_cat($delete);
+}
 require_once('include/header.php');
 require_once('include/sidebar.php');
 
+
 ?>
+
+<style>
+  .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.table th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-edit {
+  background: #ffc107;
+  color: #000;
+  margin-right: 5px;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: #fff;
+}
+</style>
 
 
 <body>
@@ -45,28 +99,6 @@ require_once('include/sidebar.php');
                   <input type="text" name="category_name" class="form-control" placeholder="Enter category name" required>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label">Slug</label>
-                  <input type="text" name="slug" class="form-control" placeholder="category-slug">
-                  <div class="form-hint">URL friendly name (optional)</div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Description</label>
-                  <textarea name="description" class="form-control" placeholder="Write description..."></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Status</label>
-                  <label class="toggle">
-                    <input type="checkbox" name="status" class="toggle-input" checked>
-                    <div class="toggle-track">
-                      <div class="toggle-thumb"></div>
-                    </div>
-                    <span class="toggle-label">Active</span>
-                  </label>
-                </div>
-
               </div>
             </div>
 
@@ -74,29 +106,6 @@ require_once('include/sidebar.php');
             <div class="add-edit-sidebar">
 
               <!-- Image Upload -->
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">Category Image</div>
-                </div>
-                <div class="card-body">
-
-                  <div class="upload-zone">
-                    <input type="file" name="category_image" class="file-input" hidden>
-                    <div class="upload-zone-icon">
-                      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="17 8 12 3 7 8" />
-                        <line x1="12" y1="3" x2="12" y2="15" />
-                      </svg>
-                    </div>
-                    <div class="upload-zone-title">Click to upload</div>
-                    <div class="upload-zone-hint">PNG, JPG up to 2MB</div>
-                  </div>
-
-                  <div class="img-preview-grid"></div>
-
-                </div>
-              </div>
 
               <!-- Save Buttons -->
               <div class="card">
@@ -110,6 +119,48 @@ require_once('include/sidebar.php');
 
           </div>
         </form>
+
+        <!-- CATEGORY TABLE -->
+        <div class="card mt-16">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Category List</div>
+              <div class="card-subtitle">All added categories will appear here</div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Category Name</th>
+                  <th style="text-align:right;">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Sample Row -->
+                <?php
+                $category = show_category();
+                foreach ($category as $value) {
+                ?>
+                  <tr>
+                    <td><?php echo $value['category_id']; ?></td>
+                    <td><?php echo $value['category_name']; ?></td>
+                    <td style="text-align:right;">
+                    <a href="edit_category.php?edit=<?php echo $value['category_id']; ?>" class="btn btn-sm btn-edit">Edit</a>
+                    <a href="add_category.php?delete=<?php echo $value['category_id']; ?>" onclick="return confirm('Are you sure you want to delete your account? This cannot be undone.')" class="btn btn-sm btn-delete">Delete</a>
+                  </td>
+                  </tr>
+                <?php
+                }
+                ?>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
 
       </div>
     </div>
